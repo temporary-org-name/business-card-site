@@ -1,7 +1,18 @@
-h1 {
-    color: green;
+body {
+    overflow-x: hidden;
+    margin: 0;
+    font-family: YS Text,sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-div {
-    display: block;
+.main-container {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 800px;
 }

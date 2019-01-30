@@ -5,5 +5,5 @@ import Main from './Main.jsx';
 
 ReactDOM.render(
     <Main />,
-    document.getElementById('container')
+    document.getElementById('mount')
 );

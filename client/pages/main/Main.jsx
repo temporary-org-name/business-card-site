@@ -1,5 +1,8 @@
 import React from 'react';
 import './main.scss';
+import Logotype from '../../components/logotype/Logotype.jsx';
+import Layout from '../../components/layout/Layout.jsx';
+import Page from '../../components/page/Page.jsx';
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -7,8 +10,11 @@ export default class Main extends React.Component {
     }
 
     render() {
-        return (<div>
-            <h1>Main</h1>
+        return (<div className='main-container'>
+            <Logotype />
+            <Layout>
+                <Page className='page_name_main page_visible'/>
+            </Layout>
         </div>);
     }
 };
