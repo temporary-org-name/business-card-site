@@ -3,4 +3,17 @@
     overflow: hidden;
     height: 100vh;
     min-height: 600px;
+
+    &__dimmer {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: 50%;
+        min-width: 500px;
+        height: 100%;
+        content: "";
+        background: rgba(14,50,70,.4);
+    }
 }

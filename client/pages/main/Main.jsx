@@ -13,7 +13,9 @@ export default class Main extends React.Component {
         return (<div className='main-container'>
             <Logotype />
             <Layout>
+            {/* TODO page_visible in state to change it dynamicly */}
                 <Page className='page_name_main page_visible'/>
+                {/* <Page className='page_name_main page_visible'/> */}
             </Layout>
         </div>);
     }

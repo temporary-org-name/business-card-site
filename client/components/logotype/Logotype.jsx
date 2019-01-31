@@ -1,6 +1,6 @@
 import React from 'react';
 import './logotype.scss';
-import Header from '../header/Header.jsx';
+import Text from '../text/Text.jsx';
 
 export default class Logotype extends React.Component {
     constructor(props) {
@@ -10,8 +10,8 @@ export default class Logotype extends React.Component {
     render() {
         return (<div className='logotype'>
             <div className='content-wrapper logotype__wrapper'>
-                <Header font={{weight: 'bold', size: 'large'}} text='Work'/>
-                <Header font={{size: 'large'}} text='site' style={{marginLeft: 5}}/>
+                <Text font={{weight: 'bold', size: 'xxlarge', color: 'white'}} value='Work'/>
+                <Text font={{size: 'xlarge', color: 'white'}} value='site' style={{marginLeft: 5}}/>
             </div>
         </div>);
     }
