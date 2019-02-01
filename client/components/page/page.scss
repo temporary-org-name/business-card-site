@@ -44,11 +44,15 @@
     width: 100%;
 }
 
+.page_order_previous.page:before {
+    top: -100%;
+}
+
 .page {
     &_visible {
         opacity: 1;
         &:before {
-            top: 0;
+            top: 0 !important;
         }
     }
 
@@ -67,6 +71,8 @@
 
     &:before {
         height: 100%;
+        top: 100%;
+        // background: no-repeat 0 0;
         content: "";
         background-size: cover;
         -webkit-transition-property: top;
@@ -101,5 +107,16 @@
         z-index: 3;
         top: -12px;
         padding-right: 30px;
+    }
+
+    &__title {
+        font-size: 46px;
+    }
+
+    &__description {
+        margin: 13px 0 28px;
+        font-size: 20px;
+        line-height: 26px;
+        opacity: 1;
     }
 }
