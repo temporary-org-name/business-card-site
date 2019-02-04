@@ -27,9 +27,9 @@
         width: 735px;
         height: 100%;
         max-height: 820px;
-        opacity: 1;
         background-repeat: no-repeat;
         background-position: 0;
+        opacity: 0;
         background-size: contain;
         -webkit-transition-property: all;
         transition-property: all;
@@ -49,13 +49,6 @@
 }
 
 .page {
-    &_visible {
-        opacity: 1;
-        &:before {
-            top: 0 !important;
-        }
-    }
-
     top: 0;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -77,6 +70,20 @@
         background-size: cover;
         -webkit-transition-property: top;
         transition-property: top;
+    }
+
+    &_visible {
+        opacity: 1;
+
+        .page__title,
+        .page__description,
+        .laptop__mockup {
+            opacity: 1;
+        }
+
+        &:before {
+            top: 0;
+        }
     }
 
     &__content-wrapper {
@@ -110,13 +117,14 @@
     }
 
     &__title {
+        opacity: 0;
         font-size: 46px;
     }
 
     &__description {
+        opacity: 0;
         margin: 13px 0 28px;
         font-size: 20px;
         line-height: 26px;
-        opacity: 1;
     }
 }
