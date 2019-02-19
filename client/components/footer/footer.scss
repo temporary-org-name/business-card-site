@@ -1,0 +1,13 @@
+.footer {
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    width: 100%;
+    padding: 24px 0;
+    font-size: 24px;
+    border: none;
+
+    &__wrapper {
+        display: flex;
+    }
+}

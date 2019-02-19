@@ -1,30 +1,30 @@
 import React from 'react';
-import './main.scss';
+
 import Logotype from '../../components/logotype/Logotype.jsx';
 import Layout from '../../components/layout/Layout.jsx';
 import Page from '../../components/page/Page.jsx';
+import Footer from '../../components/footer/Footer.jsx';
 
 import getPageAnimationClass from '../../components/page/animation/animation.js';
 
+import './main.scss';
+
 const PAGES_COUNT = 4;
+const EMPTY_ANIMATION = new Array(4).fill(0);
 
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
 
-
         this.state = {
             visibleIndex: 0,
             previousIndex: PAGES_COUNT - 1,
-            animation: {
-                page0: '',
-                page1: '',
-                page2: '',
-                page3: ''
-            }
+            animation: EMPTY_ANIMATION
         };
 
         this._handleWheel = this._handleWheel.bind(this);
+        this._onNavigationUpClick = this._onNavigationUpClick.bind(this);
+        this._onNavigationDownClick = this._onNavigationDownClick.bind(this);
     }
 
     componentDidMount() {
@@ -35,7 +35,15 @@ export default class Main extends React.Component {
         window.removeEventListener('wheel', this._handleWheel);
     }
 
-    _calcIndex(isDown, current) {
+    _onNavigationUpClick() {
+        this._handleWheel({deltaY: -10});
+    }
+
+    _onNavigationDownClick() {
+        this._handleWheel({deltaY: 10});
+    }
+
+    static _calcIndex(isDown, current) {
         if (isDown) {
             return current === PAGES_COUNT - 1 ? 0 : current + 1;
         } else {
@@ -50,28 +58,20 @@ export default class Main extends React.Component {
         const dy = event.deltaY;
         if (Math.abs(dy) < 5 || this._isAnimation) return;
 
-        const visibleNextIndex = this._calcIndex(dy > 0, this.state.visibleIndex);
+        const visibleNextIndex = Main._calcIndex(dy > 0, this.state.visibleIndex);
 
         this._isAnimation = true;
         this.setState({
-            animation: {
-                page0: getPageAnimationClass(dy > 0, 0, visibleNextIndex, this.state.visibleIndex),
-                page1: getPageAnimationClass(dy > 0, 1, visibleNextIndex, this.state.visibleIndex),
-                page2: getPageAnimationClass(dy > 0, 2, visibleNextIndex, this.state.visibleIndex),
-                page3: getPageAnimationClass(dy > 0, 3, visibleNextIndex, this.state.visibleIndex)
-            }
+            animation: EMPTY_ANIMATION.map(
+                (_, i) => getPageAnimationClass(dy > 0, i, visibleNextIndex, this.state.visibleIndex)
+            )
         });
 
         setTimeout(() => {
             this.setState({
-                animation: {
-                    page0: '',
-                    page1: '',
-                    page2: '',
-                    page3: ''
-                },
-                visibleIndex: this._calcIndex(dy > 0, this.state.visibleIndex),
-                previousIndex: this._calcIndex(dy > 0, this.state.previousIndex)
+                animation: EMPTY_ANIMATION,
+                visibleIndex: Main._calcIndex(dy > 0, this.state.visibleIndex),
+                previousIndex: Main._calcIndex(dy > 0, this.state.previousIndex)
             });
 
             this._isAnimation = false;
@@ -83,22 +83,23 @@ export default class Main extends React.Component {
             <Logotype />
             <Layout>
                 <Page className='page_name_main'
-                    animationClass={this.state.animation.page0}
+                    animationClass={this.state.animation[0]}
                     isPrevious={0 === this.state.previousIndex}
                     isVisible={0 === this.state.visibleIndex}/>
-                <Page className='page_name_x'
-                    animationClass={this.state.animation.page1}
+                <Page className='page_name_1'
+                    animationClass={this.state.animation[1]}
                     isPrevious={1 === this.state.previousIndex}
                     isVisible={1 === this.state.visibleIndex}/>
-                <Page className='page_name_main'
-                    animationClass={this.state.animation.page2}
+                <Page className='page_name_2'
+                    animationClass={this.state.animation[2]}
                     isPrevious={2 === this.state.previousIndex}
                     isVisible={2 === this.state.visibleIndex}/>
-                <Page className='page_name_x'
-                    animationClass={this.state.animation.page3}
+                <Page className='page_name_3'
+                    animationClass={this.state.animation[3]}
                     isPrevious={3 === this.state.previousIndex}
                     isVisible={3 === this.state.visibleIndex}/>
             </Layout>
+            <Footer onUpClick={this._onNavigationUpClick} onDownClick={this._onNavigationDownClick}/>
         </div>);
     }
 };
