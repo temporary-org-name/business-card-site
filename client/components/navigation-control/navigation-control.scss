@@ -13,11 +13,9 @@
         opacity: .6;
         border-radius: 4px;
         background-color: rgba(0,0,0,.5);
-        -webkit-transition: opacity .3s;
         transition: opacity .3s;
 
         &_nav_up {
-            -webkit-transform: rotate(-180deg);
             transform: rotate(-180deg)
         }
     }
@@ -31,7 +29,6 @@
         content: '';
         border-right: 3px solid #fff;
         border-bottom: 3px solid #fff;
-        -webkit-transform: translate(-50%,-50%) rotate(45deg);
         transform: translate(-50%,-50%) rotate(45deg);
     }
 }

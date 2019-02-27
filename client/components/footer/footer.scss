@@ -10,4 +10,37 @@
     &__wrapper {
         display: flex;
     }
+
+    &__links {
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        margin: auto 0;
+        vertical-align: middle;
+        white-space: nowrap;
+        transform: translateY(-50%);
+        justify-content: center;
+        align-items: baseline;
+
+        & .link {
+            margin-left: 15px;
+        }
+    }
+
+    &__link-wrapper {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        vertical-align: bottom;
+        margin-left: 25px;
+    }
+
+    & .copyright {
+        display: inline-block;
+        margin-left: 12px;
+        font-size: 11px;
+        opacity: .7;
+        color: #fff;
+    }
 }

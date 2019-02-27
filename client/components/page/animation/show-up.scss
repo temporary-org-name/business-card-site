@@ -3,35 +3,26 @@
 
     &:before {
         top: 0 !important;
-        -webkit-transition-delay: .3s;
         transition-delay: .3s;
-        -webkit-transition-duration: .45s;
         transition-duration: .45s;
     }
 
     & .page__title {
         opacity: 1 !important;
-        -webkit-transition-duration: .5s;
         transition-duration: .5s;
-        -webkit-transition-delay: .55s;
         transition-delay: .55s;
     }
 
     & .page__description {
         opacity: 1 !important;
-        -webkit-transition-duration: .5s;
         transition-duration: .5s;
-        -webkit-transition-delay: .65s;
         transition-delay: .65s;
     }
 
     & .laptop__mockup {
         opacity: 1 !important;
-        -webkit-transition-delay: .5s;
         transition-delay: .5s;
-        -webkit-transition-duration: .45s;
         transition-duration: .45s;
-        -webkit-transform: translate3d(0,-50%,0);
         transform: translate3d(0,-50%,0);
     }
 }

@@ -82,24 +82,21 @@ export default class Main extends React.Component {
         return (<div className='main-container'>
             <Logotype />
             <Layout>
-                <Page className='page_name_main'
-                    animationClass={this.state.animation[0]}
-                    isPrevious={0 === this.state.previousIndex}
-                    isVisible={0 === this.state.visibleIndex}/>
-                <Page className='page_name_1'
-                    animationClass={this.state.animation[1]}
-                    isPrevious={1 === this.state.previousIndex}
-                    isVisible={1 === this.state.visibleIndex}/>
-                <Page className='page_name_2'
-                    animationClass={this.state.animation[2]}
-                    isPrevious={2 === this.state.previousIndex}
-                    isVisible={2 === this.state.visibleIndex}/>
-                <Page className='page_name_3'
-                    animationClass={this.state.animation[3]}
-                    isPrevious={3 === this.state.previousIndex}
-                    isVisible={3 === this.state.visibleIndex}/>
+                {
+                    [0, 1, 2, 3].map((i) => {
+                        return (
+                            <Page
+                                key={`page-${i}`}
+                                className={`page_name_${i}`}
+                                animationClass={this.state.animation[i]}
+                                isPrevious={i === this.state.previousIndex}
+                                isVisible={i === this.state.visibleIndex}
+                            />
+                        )
+                    })
+                }
             </Layout>
-            <Footer onUpClick={this._onNavigationUpClick} onDownClick={this._onNavigationDownClick}/>
+            <Footer onUpClick={this._onNavigationUpClick} onDownClick={this._onNavigationDownClick} />
         </div>);
     }
 };

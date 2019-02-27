@@ -6,25 +6,19 @@
     & .page__description,
     & .page__title {
         opacity: 0 !important;
-        -webkit-transition-duration: .3s;
         transition-duration: .3s;
-        -webkit-transform: translate3d(0,50px,0);
         transform: translate3d(0,50px,0)
     }
 
     & .page__description {
-        -webkit-transition-delay: .1s;
         transition-delay: .1s
     }
 
     &.page_visible {
         & .laptop__mockup {
             opacity: 0;
-            -webkit-transition-delay: .15s;
             transition-delay: .15s;
-            -webkit-transition-duration: .3s;
             transition-duration: .3s;
-            -webkit-transform: translate3d(0,calc(-50% + 80px),0);
             transform: translate3d(0,calc(-50% + 80px),0)
         }
     }
