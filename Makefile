@@ -23,3 +23,7 @@ client.build.prod:
 .PHONY: copy.res
 copy.res:
 	cp -r ./client/res build/
+
+.PHONY: lint
+lint:
+	echo test
