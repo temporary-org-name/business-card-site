@@ -5,7 +5,7 @@ import './layout.scss';
 
 export default class Layout extends React.Component {
     static propTypes = {
-        children: PropTypes.element.isRequired
+        children: PropTypes.arrayOf(PropTypes.element).isRequired
     };
 
     render() {

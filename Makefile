@@ -1,5 +1,6 @@
 webpack = node_modules/.bin/webpack
 eslint = node_modules/.bin/eslint
+stylelint = node_modules/.bin/stylelint
 
 .PHONY: deps
 deps:
@@ -28,3 +29,4 @@ copy.res:
 .PHONY: lint
 lint:
 	$(eslint) server/**/*.js client/**/*.jsx client/**/*.js
+	$(stylelint) client/**/*.scss

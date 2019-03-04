@@ -7,6 +7,12 @@
             transition-delay: .3s;
             transition-duration: .45s
         }
+
+        & .laptop__mockup {
+            opacity: 1 !important;
+            transition-delay: .6s;
+            transition-duration: .3s
+        }
     }
 
     & .page__title {
@@ -19,13 +25,5 @@
         opacity: 1 !important;
         transition-duration: .5s;
         transition-delay: .65s
-    }
-
-    &.page_order_previous {
-        & .laptop__mockup {
-            opacity: 1 !important;
-            transition-delay: .6s;
-            transition-duration: .3s
-        }
     }
 }

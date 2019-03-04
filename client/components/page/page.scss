@@ -49,6 +49,18 @@
     color: #fff;
     transition-property: all;
 
+    &__title {
+        opacity: 0;
+        font-size: 46px;
+    }
+
+    &__description {
+        opacity: 0;
+        margin: 13px 0 28px;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
     &:before {
         height: 100%;
         top: 100%;
@@ -90,17 +102,5 @@
         z-index: 3;
         top: -12px;
         padding-right: 30px;
-    }
-
-    &__title {
-        opacity: 0;
-        font-size: 46px;
-    }
-
-    &__description {
-        opacity: 0;
-        margin: 13px 0 28px;
-        font-size: 20px;
-        line-height: 26px;
     }
 }

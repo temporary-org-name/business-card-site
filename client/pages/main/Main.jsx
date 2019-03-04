@@ -10,7 +10,7 @@ import getPageAnimationClass from '../../components/page/animation/animation.js'
 import './main.scss';
 
 const PAGES_COUNT = 4;
-const EMPTY_ANIMATION = new Array(4).fill(0);
+const EMPTY_ANIMATION = new Array(4).fill('');
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -43,7 +43,7 @@ export default class Main extends React.Component {
         this._handleWheel({deltaY: 10});
     }
 
-    static _calcInde(isDown, current) {
+    static _calcIndex(isDown, current) {
         if (isDown) {
             return current === PAGES_COUNT - 1 ? 0 : current + 1;
         } else {
