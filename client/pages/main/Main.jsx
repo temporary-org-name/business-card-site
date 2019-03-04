@@ -43,7 +43,7 @@ export default class Main extends React.Component {
         this._handleWheel({deltaY: 10});
     }
 
-    static _calcIndex(isDown, current) {
+    static _calcInde(isDown, current) {
         if (isDown) {
             return current === PAGES_COUNT - 1 ? 0 : current + 1;
         } else {
@@ -56,7 +56,9 @@ export default class Main extends React.Component {
      */
     _handleWheel(event) {
         const dy = event.deltaY;
-        if (Math.abs(dy) < 5 || this._isAnimation) return;
+        if (Math.abs(dy) < 5 || this._isAnimation) {
+            return;
+        }
 
         const visibleNextIndex = Main._calcIndex(dy > 0, this.state.visibleIndex);
 
@@ -79,12 +81,12 @@ export default class Main extends React.Component {
     }
 
     render() {
-        return (<div className='main-container'>
-            <Logotype />
-            <Layout>
-                {
-                    [0, 1, 2, 3].map((i) => {
-                        return (
+        return (
+            <div className='main-container'>
+                <Logotype />
+                <Layout>
+                    {
+                        [0, 1, 2, 3].map((i) => (
                             <Page
                                 key={`page-${i}`}
                                 className={`page_name_${i}`}
@@ -92,11 +94,11 @@ export default class Main extends React.Component {
                                 isPrevious={i === this.state.previousIndex}
                                 isVisible={i === this.state.visibleIndex}
                             />
-                        )
-                    })
-                }
-            </Layout>
-            <Footer onUpClick={this._onNavigationUpClick} onDownClick={this._onNavigationDownClick} />
-        </div>);
+                        ))
+                    }
+                </Layout>
+                <Footer onUpClick={this._onNavigationUpClick} onDownClick={this._onNavigationDownClick} />
+            </div>
+        );
     }
-};
+}

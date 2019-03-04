@@ -19,7 +19,7 @@ const COLORS = {
 const VERTICAL_ALIGN = {
     bottom: 'vertical-align_bottom',
     middle: 'vertical-align_middle'
-}
+};
 
 export default (data) => {
     const {size, weight, color, verticalAlign} = data;

@@ -1,18 +1,20 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 import './link.scss';
 
 export default class Link extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    static propTypes = {
+        href: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        imgSrc: PropTypes.string.isRequired
+    };
 
     render() {
         const {href, text, imgSrc} = this.props;
         return (
             <li className='link'>
-                <a href={href} target='_blank'>
+                <a href={href} target='_blank' rel='noopener noreferrer'>
                     <span>{text}</span>
                     <img
                         className='link__icon'
@@ -23,4 +25,4 @@ export default class Link extends React.Component {
             </li>
         );
     }
-};
+}

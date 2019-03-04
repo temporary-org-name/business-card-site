@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './navigation-control.scss';
 
 export default class NavigationControl extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    static propTypes = {
+        onUpClick: PropTypes.func,
+        onDownClick: PropTypes.func
+    };
 
     render() {
         const {onUpClick, onDownClick} = this.props;
@@ -18,4 +20,4 @@ export default class NavigationControl extends React.Component {
             </div>
         </div>);
     }
-};
+}

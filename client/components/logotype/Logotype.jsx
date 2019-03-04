@@ -1,12 +1,10 @@
 import React from 'react';
-import './logotype.scss';
+
 import Text from '../text/Text.jsx';
 
-export default class Logotype extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+import './logotype.scss';
 
+export default class Logotype extends React.Component {
     render() {
         return (<div className='logotype'>
             <div className='content-wrapper logotype__wrapper'>
@@ -15,4 +13,4 @@ export default class Logotype extends React.Component {
             </div>
         </div>);
     }
-};
+}

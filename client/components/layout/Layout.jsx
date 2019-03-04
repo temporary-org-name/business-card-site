@@ -1,15 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './layout.scss';
 
 export default class Layout extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    static propTypes = {
+        children: PropTypes.element.isRequired
+    };
 
     render() {
+        const {children} = this.props;
+
         return (<div className='layout'>
-            {this.props.children}
+            {children}
             <div className='layout__dimmer'></div>
         </div>);
     }
-};
+}

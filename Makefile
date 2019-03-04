@@ -1,4 +1,5 @@
 webpack = node_modules/.bin/webpack
+eslint = node_modules/.bin/eslint
 
 .PHONY: deps
 deps:
@@ -26,4 +27,4 @@ copy.res:
 
 .PHONY: lint
 lint:
-	echo test
+	$(eslint) server/**/*.js client/**/*.jsx client/**/*.js
