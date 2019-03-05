@@ -10,7 +10,7 @@ TSNODE = node_modules/.bin/ts-node
 
 .PHONY: deps
 deps:
-	npm i
+	npm install
 
 # Server
 .PHONY: server.dev
@@ -40,7 +40,7 @@ client.build:
 
 .PHONY: copy.resources
 copy.resources:
-	cp -r ./src/client/resources build/
+	mkdir -p build/resources && cp -r ./src/client/resources build/
 
 # Lintings
 .PHONY: lint

@@ -39,5 +39,5 @@ export default (req: Request, res: Response) => {
 };
 
 const formPath = (name: string, format: Format) => {
-    return `/build/client/${name}.bundle.${isProd ? 'min.' : ''}${format}`;
+    return `/client/${name}.bundle.${isProd ? 'min.' : ''}${format}`;
 };

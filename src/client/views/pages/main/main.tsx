@@ -86,7 +86,7 @@ export default class Main extends React.Component<Props, State> {
                         [0, 1, 2, 3].map((i) => (
                             <Page
                                 key={`page-${i}`}
-                                className={`page_name_${i}`}
+                                className={`page-name-${i}`}
                                 animationClass={this.state.animation[i]}
                                 isPrevious={i === this.state.previousIndex}
                                 isVisible={i === this.state.visibleIndex}

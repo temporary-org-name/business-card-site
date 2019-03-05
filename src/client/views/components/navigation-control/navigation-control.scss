@@ -13,10 +13,14 @@
         opacity: .6;
         border-radius: 4px;
         background-color: rgba(0,0,0,.5);
-        transition: opacity .3s;
+        transition-duration: .3s;
 
         &_nav_up {
             transform: rotate(-180deg)
+        }
+
+        &:hover {
+            background-color: rgba(0,0,0,.7);
         }
     }
 

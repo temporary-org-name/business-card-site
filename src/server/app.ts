@@ -10,7 +10,8 @@ const app = express()
     .engine('mustache', mustacheExpress())
     .set('view engine', 'mustache')
     .set('views', getAbsolutePath('./src/client/pages-template'))
-    .use('/build', express.static('build'));
+    .use('/client', express.static('build/client'))
+    .use('/res', express.static('build/resources'));
 
 app
     .get([PageUrls.MAIN], [buildPageMiddleware])
