@@ -1,0 +1,12 @@
+@import '../../styles/common.scss';
+
+.logotype {
+    position: absolute;
+    z-index: 5;
+    top: 38px;
+    width: 100%;
+
+    &__wrapper {
+        white-space: nowrap;
+    }
+}
