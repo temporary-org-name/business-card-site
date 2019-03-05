@@ -5,47 +5,44 @@ TSLINT = node_modules/.bin/tslint
 STYLELINT = node_modules/.bin/stylelint
 TSC = node_modules/.bin/tsc
 SUPERVISOR = node_modules/.bin/supervisor
+NODEMON = node_modules/.bin/nodemon
+TSNODE = node_modules/.bin/ts-node
 
 .PHONY: deps
 deps:
 	npm i
 
-.PHONY: server.run.dev
-server.run.dev:
-	NODE_PATH=$(OUT_DIR_SERVER) \
-	$(SUPERVISOR) \
-		--non-interactive \
-		--quiet \
-		--no-restart-on exit \
-		--watch build/server \
-		-- build/server/app.js
+# Server
+.PHONY: server.dev
+server.dev:
+	$(NODEMON) --exec "export TS_NODE_PROJECT=src/server/tsconfig.json && $(TSNODE) -r tsconfig-paths/register src/server/app.ts" -w src/server -e "ts"
 
-.PHONY: server.run.prod
-server.run.prod:
+.PHONY: server.build
+server.build:
+	$(TSC) -p src/server/tsconfig.json
+
+.PHONY: server.run
+server.run:
 	NODE_PATH=$(OUT_DIR_SERVER) \
 	NODE_ENVIRONMENT=production \
 	node ./build/server/app.js
 
-.PHONY: client.build.dev
-client.build.dev:
+# Client
+.PHONY: client.dev
+client.dev:
+	make copy.resources && \
 	$(WEBPACK) -w
 
-.PHONY: client.build.prod
-client.build.prod:
+.PHONY: client.build
+client.build:
+	make copy.resources && \
 	NODE_ENVIRONMENT=production $(WEBPACK)
 
-.PHONY: server.build.dev
-server.build.dev:
-	$(TSC) -p src/server/tsconfig.json --watch
+.PHONY: copy.resources
+copy.resources:
+	cp -r ./src/client/resources build/
 
-.PHONY: server.build.prod
-server.build.prod:
-	$(TSC) -p src/server/tsconfig.json
-
-.PHONY: copy.res
-copy.res:
-	cp -r ./client/resourses build/
-
+# Lintings
 .PHONY: lint
 lint:
 	make lint.server && \
