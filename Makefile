@@ -8,7 +8,7 @@ SUPERVISOR = node_modules/.bin/supervisor
 
 .PHONY: deps
 deps:
-	npm i --no-save
+	npm i
 
 .PHONY: server.run.dev
 server.run.dev:
