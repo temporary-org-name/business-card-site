@@ -1,0 +1,12 @@
+body {
+    overflow-x: hidden;
+    margin: 0;
+    font-family: YS Text,sans-serif;
+}
+
+.main-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 800px;
+}

@@ -1,0 +1,28 @@
+.page_animate-show-up {
+    opacity: 1 !important;
+
+    &:before {
+        top: 0 !important;
+        transition-delay: .3s;
+        transition-duration: .45s;
+    }
+
+    & .page__title {
+        opacity: 1 !important;
+        transition-duration: .5s;
+        transition-delay: .55s;
+    }
+
+    & .page__description {
+        opacity: 1 !important;
+        transition-duration: .5s;
+        transition-delay: .65s;
+    }
+
+    & .laptop__mockup {
+        opacity: 1 !important;
+        transition-delay: .5s;
+        transition-duration: .45s;
+        transform: translate3d(0,-50%,0);
+    }
+}

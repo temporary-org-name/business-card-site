@@ -1,25 +1,58 @@
-webpack = node_modules/.bin/webpack
+OUT_DIR_SERVER := build
+
+WEBPACK = node_modules/.bin/webpack
+TSLINT = node_modules/.bin/tslint
+STYLELINT = node_modules/.bin/stylelint
+TSC = node_modules/.bin/tsc
+SUPERVISOR = node_modules/.bin/supervisor
+NODEMON = node_modules/.bin/nodemon
+TSNODE = node_modules/.bin/ts-node
 
 .PHONY: deps
 deps:
-	npm i --no-save
+	npm install
 
-.PHONY: server.run.dev
-server.run.dev:
-	node ./server/app.js
+# Server
+.PHONY: server.dev
+server.dev:
+	$(NODEMON) --exec "export TS_NODE_PROJECT=src/server/tsconfig.json && $(TSNODE) -r tsconfig-paths/register src/server/app.ts" -w src/server -e "ts"
 
-.PHONY: server.run.prod
-server.run.prod:
-	export NODE_ENVIRONMENT=production && node ./server/app.js
+.PHONY: server.build
+server.build:
+	$(TSC) -p src/server/tsconfig.json
 
-.PHONY: client.build.dev
-client.build.dev:
-	$(webpack) --config webpack.config.js -w
+.PHONY: server.run
+server.run:
+	NODE_PATH=$(OUT_DIR_SERVER) \
+	NODE_ENVIRONMENT=production \
+	node ./build/server/app.js
 
-.PHONY: client.build.prod
-client.build.prod:
-	NODE_ENVIRONMENT=production $(webpack) --config webpack.config.js
+# Client
+.PHONY: client.dev
+client.dev:
+	make copy.resources && \
+	$(WEBPACK) -w
 
-.PHONY: copy.res
-copy.res:
-	cp -r ./client/res build/
+.PHONY: client.build
+client.build:
+	make copy.resources && \
+	NODE_ENVIRONMENT=production $(WEBPACK)
+
+.PHONY: copy.resources
+copy.resources:
+	mkdir -p build/resources && cp -r ./src/client/resources build/
+
+# Lintings
+.PHONY: lint
+lint:
+	make lint.server && \
+	make lint.client
+
+.PHONY: lint.server
+lint.server:
+	$(TSLINT) -p src/server/tsconfig.json src/server/**/*.ts
+
+.PHONY: lint.client
+lint.client:
+	$(TSLINT) -p src/client/tsconfig.json src/client/**/*.{ts,tsx} && \
+	$(STYLELINT) src/client/**/*.scss
